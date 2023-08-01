@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        // Install the Maven version configured as "M3" and add it to the path.
+        // Install the Maven version configured as "maven393" and add it to the path.
         maven "maven393"
     }
 
@@ -10,24 +10,21 @@ pipeline {
         stage('Compile') {
             steps {
                  // To run Maven on a Windows agent, use
-		 cd SparkWordCount
-                 bat "mvn -Dmaven.test.failure.ignore=true clean compile"
+		 bat "cd SparkWordCount && mvn -Dmaven.test.failure.ignore=true clean compile"
             }
 
         }
 		stage('Test') {
             steps {
                  // To run Maven on a Windows agent, use
-		 cd SparkWordCount
-                 bat "mvn -Dmaven.test.failure.ignore=true clean test"
+                 bat "cd SparkWordCount && mvn -Dmaven.test.failure.ignore=true clean test"
             }
 
         }
 		stage('Package') {
             steps {
                  // To run Maven on a Windows agent, use
-		 cd SparkWordCount
-                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                 bat "cd SparkWordCount && mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
         }
