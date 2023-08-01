@@ -6,8 +6,9 @@ pipeline {
 	stages { 
 		stage( 'Compile') { 
 			steps {
-			sh 'cd SparkWordCount'
-			sh 'mvn clean compile'
+			sh 
+			cd SparkWordCount
+			mvn clean compile
 			}
 		}
 		stage( 'Unit Test') { 
