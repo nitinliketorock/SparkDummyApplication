@@ -7,19 +7,21 @@ pipeline {
 		stage( 'Compile') { 
 			steps {
 			cd SparkWordCount
+			dir
 			mvn clean compile
 			}
 		}
 		stage( 'Unit Test') { 
 			steps {
 			cd SparkWordCount
+			dir
 			mvn clean test
 			}
 		}
 		stage( 'Package') { 
 			steps {
 			cd SparkWordCount
-			mvn clean package
+			dir
 			}
 		}	
 	}
