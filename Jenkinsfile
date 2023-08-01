@@ -4,11 +4,7 @@ pipeline {
         maven 'maven393'
     }
     stages {
-        stage('Compile') {
-            	steps {
-                	cd SparkWordCount
-			echo %MVN_HOME%
-            		}
-        	}
+        stage('Compile') 
+	    { echo %MVN_HOME% }
 	}
 }
