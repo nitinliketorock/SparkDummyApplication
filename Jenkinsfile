@@ -12,8 +12,9 @@ pipeline {
 		}
 		stage( 'Unit Test') { 
 			steps {
-			sh 'cd SparkWordCount' 
-			sh 'mvn clean test'
+			sh 
+			cd SparkWordCount
+			mvn clean test
 			}
 		}
 		stage( 'Package') { 
