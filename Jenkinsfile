@@ -5,10 +5,10 @@ pipeline {
     }
     stages {
         stage('Compile') {
-            steps {
-                cd SparkWordCount
-				bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean compile/)
-            }
-        }
+            	steps {
+                	cd SparkWordCount
+			echo %MVN_HOME%
+            		}
+        	}
 	}
 }
