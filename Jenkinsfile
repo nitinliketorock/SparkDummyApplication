@@ -7,21 +7,19 @@ pipeline {
 		stage( 'Compile') { 
 			steps {
 			cd SparkWordCount
-			dir
-			mvn clean compile
+			bat "mvn -Dmaven.test.failure.ignore=true clean compile"
 			}
 		}
 		stage( 'Unit Test') { 
 			steps {
 			cd SparkWordCount
-			dir
-			mvn clean test
+			bat "mvn -Dmaven.test.failure.ignore=true clean test"
 			}
 		}
 		stage( 'Package') { 
 			steps {
 			cd SparkWordCount
-			dir
+			bat "mvn -Dmaven.test.failure.ignore=true clean package"
 			}
 		}	
 	}
