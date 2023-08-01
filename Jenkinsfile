@@ -10,6 +10,7 @@ pipeline {
         stage('Compile') {
             steps {
                  // To run Maven on a Windows agent, use
+		 cd SparkWordCount
                  bat "mvn -Dmaven.test.failure.ignore=true clean compile"
             }
 
@@ -17,6 +18,7 @@ pipeline {
 		stage('Test') {
             steps {
                  // To run Maven on a Windows agent, use
+		 cd SparkWordCount
                  bat "mvn -Dmaven.test.failure.ignore=true clean test"
             }
 
@@ -24,6 +26,7 @@ pipeline {
 		stage('Package') {
             steps {
                  // To run Maven on a Windows agent, use
+		 cd SparkWordCount
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
