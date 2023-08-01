@@ -1,25 +1,31 @@
 pipeline { 
-	agent any
-	tools {
-	      maven 'maven393'
-	      }
+	def mvnHome
+    stage('Preparation') { 
+        mvnHome = tool 'maven393'
+    }
 	stages { 
 		stage( 'Compile') { 
 			steps {
-			cd SparkWordCount
-			bat "mvn -Dmaven.test.failure.ignore=true clean compile"
+			withEnv(["MVN_HOME=$mvnHome"]) {
+					cd SparkWordCount
+					bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean compile/)
+				}
 			}
 		}
 		stage( 'Unit Test') { 
 			steps {
-			cd SparkWordCount
-			bat "mvn -Dmaven.test.failure.ignore=true clean test"
+			withEnv(["MVN_HOME=$mvnHome"]) {
+					cd SparkWordCount
+					bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean test/)
+				}
 			}
 		}
 		stage( 'Package') { 
 			steps {
-			cd SparkWordCount
-			bat "mvn -Dmaven.test.failure.ignore=true clean package"
+			withEnv(["MVN_HOME=$mvnHome"]) {
+					cd SparkWordCount
+					bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+				}
 			}
 		}	
 	}
